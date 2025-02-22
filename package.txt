@@ -1,0 +1,28 @@
+backend için yapılacaklar
+
+npm init
+npm i
+
+1- express : http protokolünü kullanarak işlem yapmak için --> npm install express --save
+2- cors : api politikaları izinleri için --> npm i cors
+3- nodemon : sunucuyu değişikliklerinden sonra otomatik olarak tekrar başlatmak için --> npm i -g nodemon (daha öce hiç kurulmadıysa yapılır)
+4- dotenv : env dosyalarını tanımlamak için --> npm i dotenv
+5- mongoose : mongo db üzerinde işlem yapabilmek için --> npm i mongoose
+6- uuid : id üretmek için --> npm i uuid
+
+.gitignore --> node js gitignore
+
+
+server.js kurulduktan sonra node server.js --- nodemon server.js
+
+npm i bcrypt şifreleme için
+
+npm i react-router-dom
+
+---------------------------
+1- React page yapıları oluşturulacak
+2- Backend tarafında paketler kurulacak
+3- React component yapıları oluşturulacak
+4- Backend projesi tamamlanacak
+5- Admin panel oluşturulacak
+6- Frontend react tarafı tamamlanacak

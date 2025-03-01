@@ -1,5 +1,3 @@
-
-
 import { Routes, Route } from "react-router-dom"
 import SingleBlogPage from "./pages/SingleBlogPage"
 import SingleProductPage from "./pages/SingleProductPage"
@@ -9,6 +7,7 @@ import CartPage from "./pages/CartPage"
 import AccountPage from "./pages/AccountPage"
 import BlogsPage from "./pages/BlogsPage"
 import HomePage from "./pages/HomePage"
+import CategoryList from "./pages/Admin/Categories/CategoryList"
 
 
 function App() {
@@ -25,6 +24,10 @@ function App() {
         <Route path="/cart" element={<CartPage/>}/>
         <Route path="/singleblog" element={<SingleBlogPage/>}/>
         <Route path="/singleproduct" element={<SingleProductPage/>}/>
+        <Route path="/admin/*"> 
+          <Route index element={<CategoryList/>}/>
+          <Route path="categories" element={<CategoryList/>}/>
+        </Route>
       </Routes>
     </>
   )

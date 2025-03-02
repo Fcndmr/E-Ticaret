@@ -14,6 +14,9 @@ import UserList from "./pages/Admin/Users/UserList"
 import ProductList from "./pages/Admin/Products/ProductList"
 import UpdateUser from "./pages/Admin/Users/UpdateUser"
 import CreateUser from "./pages/Admin/Users/CreateUser"
+import CouponList from "./pages/Admin/Coupon/CouponList"
+import CreateCoupon from "./pages/Admin/Coupon/CreateCoupon"
+import UpdateCoupon from "./pages/Admin/Coupon/UpdateCoupon"
 
 
 function App() {
@@ -38,6 +41,9 @@ function App() {
           <Route path="users" element={<UserList/>}/>
           <Route path="users/create" element={<CreateUser/>}/>
           <Route path="users/update/:id" element={<UpdateUser/>}/>
+          <Route path="coupons" element={<CouponList/>}/>
+          <Route path="coupons/create" element={<CreateCoupon/>}/>
+          <Route path="coupons/update/:id" element={<UpdateCoupon/>}/>
           <Route path="products" element={<ProductList/>}/>
         </Route>
       </Routes>

@@ -33,7 +33,7 @@ function UserList() {
           render: (record) => (
               <>
                   <Button color="cyan" variant="solid" onClick={() => navigate(`/admin/users/update/${record._id}`)} style={{margin:"5px"}}>Update</Button>
-                  <Button color="danger" variant="solid" onClick={() => deleteUser(record._id)}>Delete</Button>
+                  <Button color="danger" variant="solid" onClick={() => deleteUser(record.email)}>Delete</Button>
               </>
           )
         }
@@ -56,12 +56,12 @@ function UserList() {
         }
       };
 
-      const deleteUser = async (userId) => {
+      const deleteUser = async (userEmail) => {
         try {
-          const response = await fetch(`http://localhost:5000/api/users/${userId}`, {
+          const response = await fetch(`http://localhost:5000/api/users/${userEmail}`, {
             method : "DELETE",
             headers : { "Content-Type" : "application/json"},
-            body : JSON.stringify({_id : userId})
+            body : JSON.stringify({email : userEmail})
           });
           if(response.ok){
             console.log("Kullanıcı başarıyla silindi...");

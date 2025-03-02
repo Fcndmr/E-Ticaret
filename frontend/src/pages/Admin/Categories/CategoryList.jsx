@@ -22,9 +22,9 @@ function CategoryList() {
     {
       title: "Process",
       key: "process",
-      render: () => (
+      render: (record) => (
           <>
-              <Button color="cyan" variant="solid" onClick={() => navigate("/admin/categories/update")} style={{margin:"5px"}}>Update</Button>
+              <Button color="cyan" variant="solid" onClick={() => navigate(`/admin/categories/update/${record._id}`)} style={{margin:"5px"}}>Update</Button>
               <Button color="danger" variant="solid" onClick={() => navigate("/admin/categories/update")}>Delete</Button>
           </>
       )

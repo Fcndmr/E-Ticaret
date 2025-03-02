@@ -10,6 +10,9 @@ import HomePage from "./pages/HomePage"
 import CategoryList from "./pages/Admin/Categories/CategoryList"
 import CreateCategory from "./pages/Admin/Categories/CreateCategory"
 import UpdateCategory from "./pages/Admin/Categories/UpdateCategory"
+import UserList from "./pages/Admin/Users/UserList"
+import ProductList from "./pages/Admin/Products/ProductList"
+import UpdateUser from "./pages/Admin/Users/UpdateUser"
 
 
 function App() {
@@ -31,6 +34,11 @@ function App() {
           <Route path="categories" element={<CategoryList/>}/>
           <Route path="categories/create" element={<CreateCategory/>}/>
           <Route path="categories/update/:id" element={<UpdateCategory/>}/>
+          <Route path="users" element={<UserList/>}/>
+          <Route path="users/create" element={<UserList/>}/>
+          <Route path="users/update/:id" element={<UpdateUser/>}/>
+          <Route path="products" element={<ProductList/>}/>
+
         </Route>
       </Routes>
     </>

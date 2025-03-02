@@ -25,37 +25,11 @@ function CategoryList() {
       render: (record) => (
           <>
               <Button color="cyan" variant="solid" onClick={() => navigate(`/admin/categories/update/${record._id}`)} style={{margin:"5px"}}>Update</Button>
-              <Button color="danger" variant="solid" onClick={() => navigate("/admin/categories/update")}>Delete</Button>
+              <Button color="danger" variant="solid" onClick={() => deleteCategory(record._id)}>Delete</Button>
           </>
       )
     }
   ];
-  //   const data1 = [
-  //     {
-  //       key: '1',
-  //       name: 'John Brown',
-  //       age: 32,
-  //       address: 'New York No. 1 Lake Park',
-  //     },
-  //     {
-  //       key: '2',
-  //       name: 'Jim Green',
-  //       age: 42,
-  //       address: 'London No. 1 Lake Park',
-  //     },
-  //     {
-  //       key: '3',
-  //       name: 'Joe Black',
-  //       age: 32,
-  //       address: 'Sydney No. 1 Lake Park',
-  //     },
-  //     {
-  //       key: '4',
-  //       name: 'Jim Red',
-  //       age: 32,
-  //       address: 'London No. 2 Lake Park',
-  //     },
-  //   ];
   const onChange = (pagination, filters, sorter, extra) => {
     console.log("params", pagination, filters, sorter, extra);
   };
@@ -74,9 +48,25 @@ function CategoryList() {
     }
   };
 
+  const deleteCategory = async (categoryId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/categories/${categoryId}`, {
+        method : "DELETE",
+        headers : { "Content-Type" : "application/json"},
+        body : JSON.stringify({_id : categoryId})
+      });
+      if(response.ok){
+        console.log("Kategori başarıyla silindi...");
+        navigate("/admin/categories");
+      }
+    } catch (error) {
+      console.log("Sunucu hatası...", error);
+    }
+  }
+
   useEffect(() => {
     getCategories();
-  }, []);
+  }, [deleteCategory]);
 
   return (
     <>

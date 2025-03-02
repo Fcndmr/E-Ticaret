@@ -2,23 +2,24 @@ import { Button, Form, Input } from "antd";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-function UpdateCategory() {
-  const [form] = Form.useForm();
+function UpdateUser() {
+    const [form] = Form.useForm();
   const formLayout = "vertical";
   const params = useParams();
   const navigate = useNavigate();
-  const categoryId = params.id;
+  const userId = params.id;
 
-  const getCategoryById = async () => {
+  const getUserById = async () => {
     try {
-        const response = await fetch(`http://localhost:5000/api/categories/${categoryId}`);
+        const response = await fetch(`http://localhost:5000/api/users/${userId}`);
         if(response.ok){
             const data = await response.json();
             if(data){
                 form.setFieldsValue({
-                    name : data.name,
-                    img : data.img,
-                    _id : categoryId
+                    username : data.username,
+                    email : data.email,
+                    password : data.password,
+                    _id : userId
                 })
                 console.log(form.getFieldsValue())
             }
@@ -29,31 +30,29 @@ function UpdateCategory() {
   }
 
   useEffect(() => {
-    getCategoryById()
+    getUserById()
   });
 
-  const updateCategory = async (values) => {
+  const updateUser = async (values) => {
     try {
-        const response = await fetch(`http://localhost:5000/api/categories/${categoryId}`, {
+        const response = await fetch(`http://localhost:5000/api/users/${userId}`, {
             method : "PUT",
             headers : { "Content-Type" : "application/json"},
             body : JSON.stringify(values)
         });
         if(response.ok){
-            console.log("Kategori başarıyla güncellendi...");
-            navigate("/admin/categories");
+            console.log("Kullanıcı başarıyla güncellendi...");
+            navigate("/admin/users");
         }else{
-            console.log("Kategori güncellenirken bir hata oluştu...");
+            console.log("Kullanıcı güncellenirken bir hata oluştu...");
         }
     } catch (error) {
         console.log("Sunucu hatası...", error);
     }
   };
-  
   return (
     <>
-    
-    <h1>Update Category Panel</h1>
+      <h1>Update User Panel</h1>
     <br /><hr /><br />
       <Form
         layout={formLayout}
@@ -61,13 +60,16 @@ function UpdateCategory() {
         initialValues={{
           layout: formLayout,
         }}
-        onFinish={updateCategory}
+        onFinish={updateUser}
       >
-        <Form.Item label="Category Name" name="name">
-          <Input placeholder="Category name enter..." />
+        <Form.Item label="User Username" name="username">
+          <Input placeholder="User username enter..." />
         </Form.Item>
-        <Form.Item label="Category Image" name="img">
-          <Input placeholder="Category image enter..." />
+        <Form.Item label="User Email" name="email">
+          <Input placeholder="User email enter..." />
+        </Form.Item>
+        <Form.Item label="User Password" name="password">
+          <Input placeholder="User password enter..." />
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">Update</Button>
@@ -77,4 +79,4 @@ function UpdateCategory() {
   )
 }
 
-export default UpdateCategory
+export default UpdateUser

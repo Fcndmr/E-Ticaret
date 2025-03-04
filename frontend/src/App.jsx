@@ -17,6 +17,7 @@ import CreateUser from "./pages/Admin/Users/CreateUser"
 import CouponList from "./pages/Admin/Coupon/CouponList"
 import CreateCoupon from "./pages/Admin/Coupon/CreateCoupon"
 import UpdateCoupon from "./pages/Admin/Coupon/UpdateCoupon"
+import CreateProduct from "./pages/Admin/Products/CreateProduct"
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Route path="coupons/create" element={<CreateCoupon/>}/>
           <Route path="coupons/update/:id" element={<UpdateCoupon/>}/>
           <Route path="products" element={<ProductList/>}/>
+          <Route path="products/create" element={<CreateProduct/>}/>
         </Route>
       </Routes>
     </>
